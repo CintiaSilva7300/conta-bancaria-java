@@ -1,14 +1,23 @@
 package contaBancaria;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import conta.model.ModelConta;
 import conta.util.Cores;
 
 public class Menu {
 public static void main(String[] args) {
         
         Scanner leia = new Scanner(System.in);
-		
+		 ArrayList<ModelConta> contaLista = new ArrayList<>();
+        
+        int numero;
+        int agencia;
+        int tipo;
+        String titular;
+        float saldo;
+        
 		int opcao;
 				
 		while(true) {
@@ -46,12 +55,43 @@ public static void main(String[] args) {
 			switch (opcao) {
 				case 1:
 					System.out.println(Cores.TEXT_WHITE + "Criar Conta\n\n");
+
+					System.out.println("Digite o numero da conta");		
+					numero = leia.nextInt();
+
+					System.out.println("Digite o numero da agencia");		
+					agencia = leia.nextInt();
+
+					System.out.println("Tipo da conta: 1 - Conta Corrente. 2 - Conta Poupança");		
+					tipo = leia.nextInt();
+
+					System.out.println("Digite o valor do deposito");		
+					saldo = leia.nextInt();
+
+					leia.nextLine();
+
+					System.out.println("Digite o nome do titular da conta");		
+					titular = leia.nextLine();
+
+					ModelConta newConta = new ModelConta(numero, agencia, tipo, titular, saldo);
+		     		
+		     		newConta.visualizar();
 				
-                    		break;
+                    break;
+
 				case 2:
 					System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n\n");
+
+					// if (contaLista.isEmpty()) {
+					// 	System.out.println("Nenhuma conta cadastrada.");
+					// } else {
+					// 	for (ModelConta conta : contaLista) {
+					// 		conta.visualizar();
+					// 	}
+					// }
 					
-                    		break;
+					break;
+
 				case 3:
 					System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n\n");
 	
@@ -81,13 +121,14 @@ public static void main(String[] args) {
                     		break;
 			}
 		}	
-    }
+	}
+	
 
     public static void sobre() {
 	System.out.println("\n*********************************************************");
-	System.out.println("Projeto Desenvolvido por: ");
-	System.out.println("Generation Brasil - generation@generation.org");
-	System.out.println("github.com/conteudoGeneration");
+	System.out.println("Projeto Desenvolvido por: Cintia");
+	// System.out.println("Generation Brasil - generation@generation.org");
+	System.out.println("https://github.com/CintiaSilva7300/conta-bancaria-java");
 	System.out.println("*********************************************************");
    }
 }
