@@ -13,7 +13,7 @@ import conta.util.Cores;
 
 public abstract class Menu {
 	public static void main(String[] args) {
-
+		
 		Scanner leia = new Scanner(System.in);
 		ArrayList<ModelConta> contaLista = new ArrayList<>();
 		ArrayList<ContaCorrente> contaCorrenteList = new ArrayList<>();
@@ -25,6 +25,7 @@ public abstract class Menu {
 		String titular;
 		String titularCorrente;
 		float saldo;
+		double valor;
 
 		int opcao;
 
@@ -48,7 +49,7 @@ public abstract class Menu {
 			System.out.println("            9 - filtrar conta por Numero            ");
 			System.out.println("            10 - listar todas                        ");
 			System.out.println("            11 - Cadastrar nova conta                ");
-			System.out.println("            12 - Sair                                 ");
+			System.out.println("            12 - Sair                                ");
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
@@ -107,12 +108,20 @@ public abstract class Menu {
 				break;
 			case 4:
 				System.out.println(Cores.TEXT_WHITE + "Atualizar dados da Conta\n\n");
+				ContaControlle.cadastrar();
 				break;
 			case 5:
 				System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n\n");
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
+				ContaControlle contaControlle = new ContaControlle(1234567, "Cintia", 10000);
+				
+				System.out.println("Digite o valor do saque");
+				valor = leia.nextDouble();
+				
+				contaControlle.sacar(valor);
+				
 				break;
 			case 7:
 				System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
@@ -135,9 +144,8 @@ public abstract class Menu {
 				System.out.println(Cores.TEXT_WHITE + "Cadastrar nova conta");
 				ContaControlle.cadastrar();
 				break;
-				
+			
 			case 12:
-				
 				break;	
 
 			default:
