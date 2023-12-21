@@ -108,7 +108,15 @@ public abstract class Menu {
 				break;
 			case 4:
 				System.out.println(Cores.TEXT_WHITE + "Atualizar dados da Conta\n\n");
-				ContaControlle.cadastrar();
+				List<ContaControlle> contas = new ArrayList<>();
+
+			    // Adiciona uma conta na lista contas
+			    ContaControlle c = new ContaControlle(1234567, "Cintia", 10000);
+			    contas.add(c);
+
+			    // Chame o método atualizar passando a lista de contas
+			    c.atualizar(contas);
+			    
 				break;
 			case 5:
 				System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n\n");

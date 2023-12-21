@@ -91,30 +91,30 @@ public class ContaControlle {
 		System.out.println(contaControlle);
 	}
 
-	public static void atualizar() {
-		Scanner leia = new Scanner(System.in);
-		int numeroConta;
-
-		System.out.println("Informe o número da conta a ser atualizada: ");
-		numeroConta = leia.nextInt();
-
-		Optional<ContaControlle> contaOptional = contas.stream().filter(conta -> conta.getNumero() == numeroConta)
-				.findFirst();
-
-		if (contaOptional.isPresent()) {
-			ContaControlle conta = contaOptional.get();
-
-			System.out.println("Informe o novo titular da conta: ");
-			conta.setTitular(leia.next());
-
-			System.out.println("Informe o novo saldo da conta: ");
-			conta.setSaldo(leia.nextDouble());
-
-			System.out.println("Conta atualizada com sucesso!");
-		} else {
-			System.out.println("Conta não encontrada. Não foi possível atualizar.");
-		}
-	}
+//	public static void atualizar() {
+//		Scanner leia = new Scanner(System.in);
+//		int numeroConta;
+//
+//		System.out.println("Informe o número da conta a ser atualizada: ");
+//		numeroConta = leia.nextInt();
+//
+//		Optional<ContaControlle> contaOptional = contas.stream().filter(conta -> conta.getNumero() == numeroConta)
+//				.findFirst();
+//
+//		if (contaOptional.isPresent()) {
+//			ContaControlle conta = contaOptional.get();
+//
+//			System.out.println("Informe o novo titular da conta: ");
+//			conta.setTitular(leia.next());
+//
+//			System.out.println("Informe o novo saldo da conta: ");
+//			conta.setSaldo(leia.nextDouble());
+//
+//			System.out.println("Conta atualizada com sucesso!");
+//		} else {
+//			System.out.println("Conta não encontrada. Não foi possível atualizar.");
+//		}
+//	}
 	
 	public void sacar(double valor) {
 	    if (this.getSaldo() < valor) {
@@ -123,7 +123,32 @@ public class ContaControlle {
 	        this.setSaldo(this.getSaldo() - valor);
 	        System.out.println("Saque realizado com sucesso!");
 	    }
-		
-		
 	}
+	
+	public void atualizar(List<ContaControlle> contas) {
+	    Scanner leia = new Scanner(System.in);
+	    int numeroConta;
+
+	    System.out.println("Informe o número da conta a ser atualizada: ");
+	    numeroConta = leia.nextInt();
+
+	    Optional<ContaControlle> contaOptional = contas.stream()
+	            .filter(conta -> conta.getNumero() == numeroConta)
+	            .findFirst();
+
+	    if (contaOptional.isPresent()) {
+	        ContaControlle conta = contaOptional.get();
+
+	        System.out.println("Informe o novo titular da conta: ");
+	        conta.setTitular(leia.next());
+
+	        System.out.println("Informe o novo saldo da conta: ");
+	        conta.setSaldo(leia.nextDouble());
+
+	        System.out.println("Conta atualizada com sucesso!");
+	    } else {
+	        System.out.println("Conta não encontrada. Não foi possível atualizar.");
+	    }
+	}
+
 }
